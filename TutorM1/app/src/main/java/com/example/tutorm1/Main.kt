@@ -352,5 +352,60 @@ fun kotlinOOP(){
 }
 
 fun basicTutor(){
+    //Berikut adalah beberapa cara membuat instance object
+    val hewan1:Hewan = Hewan(3000,5000, jumlahKaki = 2)
+    val hewan2:Hewan = Hewan(hargaJual = 1500, hargaBeli = 900, jumlahKaki = 10)
 
+    //coba print, ini sudah dioverride untuk method tostring
+//    println(hewan1)
+//    println(hewan2)
+//    println(hewan3)
+
+    //untuk getter setter bisa langsung diakses dengan NamaClass.Properti
+    hewan1.hargaBeli = 10
+//    print(hewan1.hargaBeli)
+
+    //apabila parameter pada constructor diset sebagai val, maka properti tsb tidak bisa diset lagi
+//    hewan1.jumlahKaki = 20 //pasti error Val cannot be reassigned
+
+    //coba panggil custom getter untuk mendapatkan profit jual hewan
+    println(hewan2.profitJual)
+
+    hewan2.namaHewan = "Malika"
+    hewan2.nomorKodeHewan = 0
+    println(hewan2.kodeHewan)
+
+    val anjing1:Anjing = Anjing(30)
+    println(anjing1)
+    anjing1.hargaBeli = 1100 //bisa langsung set properti parent class seperti ini
+    anjing1.hargaJual = 2000
+    anjing1.namaHewan = "Samoyed"
+    anjing1.nomorKodeHewan = 1
+    println(anjing1.kodeHewan)
+    println(anjing1.hasilHewan())
+
+    val ikan1:Ikan = Ikan()
+    ikan1.namaHewan = "Nemo"
+
+    //konsep polymorphism, dimana semua instance di atas merupakan instance dari class Hewan,
+    // maupun subclass / turunan dari class hewan
+    val listHewanDummy: ArrayList<Hewan> = arrayListOf(hewan1, hewan2, anjing1, ikan1)
+
+    //untuk cek apakah object ini merupakan instance tertentu, bisa menggunakan is
+    for (i in 0..listHewanDummy.size-1){
+        val h = listHewanDummy[i]
+        if(h is Anjing){
+            println("Hewan ${h.namaHewan} adalah anjing")
+        }else if(h is Ikan){
+            println("Hewan ${h.namaHewan} adalah ikan")
+        }else{
+            println("Hewan ${h.namaHewan} adalah hewan selain anjing dan ikan")
+        }
+    }
+}
+
+//kita juga bisa extend function seperti di bawah ini, bisa digunakan apabila kita tidak mau
+// memodifikasi class, namun memerlukan method tambahan untuk menjalankan logic tertentu
+fun Int.toRupiah():String{
+    return "Rp.$this"
 }
