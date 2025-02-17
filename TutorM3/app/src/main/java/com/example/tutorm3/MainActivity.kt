@@ -1,27 +1,26 @@
 package com.example.tutorm3
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import kotlin.random.Random
+import android.widget.Button
+import android.content.Intent
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 
 class MainActivity : AppCompatActivity() {
-
-    // Deklarasi semua komponen yang akan dipakai
-    private lateinit var txtNama: TextView
-    private lateinit var txtNRP: TextView
-    private lateinit var txtJurusan: TextView
-    private lateinit var txtHasil: TextView
-    private lateinit var btnSubmit: Button
-    private lateinit var btnPindah: Button
-    private lateinit var chkAktif: CheckBox
+    lateinit var btnToAddMahasiswa:Button
+    lateinit var btnSort:Button
+    lateinit var btnChange:Button
+    lateinit var rvMahasiswa: RecyclerView
+    lateinit var mhsAdapter: MahasiswaAdapter
+    private val NUMBER_OF_COL = 2
+    var rvMode: Int = 1
+    var sortMode: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,51 +32,95 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        // Ambil semua komponen yang sudah dideklarasi dan simpan dalam variabel
-        txtNama = findViewById(R.id.txtNama)
-        txtNRP = findViewById(R.id.txtNRP)
-        txtJurusan = findViewById(R.id.txtJurusan)
-        txtHasil = findViewById(R.id.txtHasil)
-        btnSubmit = findViewById(R.id.btnSubmit)
-        btnPindah = findViewById(R.id.btnPindah)
-        chkAktif = findViewById(R.id.chkAktif)
+        rvMahasiswa = findViewById(R.id.rvMahasiswa)
+        btnToAddMahasiswa = findViewById(R.id.btnToAddMahasiswa)
+        btnSort = findViewById(R.id.btnSort)
+        btnChange = findViewById(R.id.btnChange)
 
-        // Tambahkan event onclick pada button
-        btnSubmit.setOnClickListener(){
-            var nama = txtNama.text.toString();
-            var nrp = txtNRP.text.toString();
-            var jurusan = txtJurusan.text.toString();
-            var status = if (chkAktif.isChecked) "Aktif" else "Non-aktif"
-            if (nama == "" || nrp == "" || jurusan == ""){
-                // Menampilkan toast (notifikasi sederhana) kepada user
-                Toast.makeText(this@MainActivity, "Pastikan semua field terisi!", Toast.LENGTH_LONG).show()
-                // Toast.makeText(context, message, durasi).show()
-                // Jangan lupa .show(), kalau lupa maka toast tidak akan muncul
-                // Toast.LENGTH_LONG bisa diganti dengan Toast.LENG_SHORT untuk mengganti durasi toast ditampilkan
+        setAdapterAndLayoutManager(rvMode)
+
+        btnToAddMahasiswa.setOnClickListener {
+            val intent = Intent(this@MainActivity, AddMhsActivity::class.java)
+            intent.putExtra("mode","INSERT")
+            startActivity(intent)
+        }
+        btnSort.setOnClickListener {
+            if(sortMode==1){
+                sortMode = 0
+                //Untuk sorting secara descending, pakai sortByDescending
+                //untuk multiple sort, bisa dilakukan dengan memberi tanda +
+                MockDB.listMhs.sortByDescending {
+                        mhs-> mhs.nrp + mhs.nama
+                }
+                btnSort.text = "Sort Ascending"
+            }else {
+                sortMode = 1
+                //Untuk sorting secara ascending, pakai sortBy saja
+                MockDB.listMhs.sortBy {
+                        mhs-> mhs.nrp + mhs.nama
+                }
+                btnSort.text = "Sort Descending"
             }
-            else{
-                // concate text & variabel
-                var hasil = "Mahasiswa bernama " + nama + " dengan NRP " + nrp + " dari jurusan " + jurusan + " berstatus " + status
-                // Random angka, jangan lupa "import kotlin.random.Random"
-                // from - until (until tidak termasuk)
-                var rnd = Random(System.currentTimeMillis())
-                var rndAngka = rnd.nextInt(0, 10)
-                hasil = rndAngka.toString() + ". " + hasil
+            mhsAdapter.notifyDataSetChanged()
+        }
+        btnChange.setOnClickListener {
+            when(rvMode){
+                1 -> {
+                    rvMode = 2
+                    btnChange.text = "Change to Horizontal List"
+                }
+                2 -> {
+                    rvMode = 3
+                    btnChange.text = "Change to Vertical List"
+                }
+                else->{
+                    rvMode = 1
+                    btnChange.text = "Change to Grid"
+                }
+            }
+            setAdapterAndLayoutManager(rvMode)
+        }
+    }
 
-                // Cara lain random lbh pendek
-                // var rnd2 = (0..10).random()
-
-                // set txtHasil value
-                txtHasil.text = hasil
+    override fun onResume() {
+        super.onResume()
+        mhsAdapter.notifyDataSetChanged()
+    }
+    private fun setAdapterAndLayoutManager(tipe:Int){
+        lateinit var layoutManager: LayoutManager
+        var layout:Int = R.layout.mahasiswa_item
+        when (tipe) {
+            1 -> {
+                //linear layout bentuknya seperti list biasa urut ke bawah
+                layoutManager = LinearLayoutManager(this@MainActivity)
+            }
+            2 -> {
+                // tipe grid yang berbentuk card
+                // untuk jumlah kolom gunakan parameter kedua
+                layoutManager = GridLayoutManager(this, NUMBER_OF_COL)
+                layout = R.layout.mahasiswa_item_2
+            }
+            else -> {
+                // linear dengan scroll horizontal
+                // agar horizontal tambahkan properti LinearLayoutManager.HORIZONTAL
+                // reverse layout = false, maka akan rata kiri
+                // bila true maka akan menjadi rata kanan
+                layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
+                layout = R.layout.mahasiswa_item_2
             }
         }
 
-        btnPindah.setOnClickListener(){
-            // intent berfungsi untuk mempersiapkan activity lain yang akan dipanggil
-            val intent = Intent(this, KampusActivity::class.java)
-            // Intent(activity asal, activity tujuan)
-            // startActivity untuk menampilkan
+        // perlu untuk memasangkan adapter
+        // serta layout manager ke recycler view
+        mhsAdapter = MahasiswaAdapter(MockDB.listMhs, layout) { mhs ->
+            val intent = Intent(this@MainActivity, AddMhsActivity::class.java)
+            intent.putExtra("mode","UPDATE")
+            intent.putExtra("nrp",mhs.nrp)
             startActivity(intent)
+        }
+        rvMahasiswa.apply {
+            this.layoutManager = layoutManager
+            this.adapter = mhsAdapter
         }
     }
 }
