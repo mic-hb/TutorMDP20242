@@ -1,0 +1,497 @@
+{
+	"info": {
+		"_postman_id": "568d2ae1-f40b-4dc0-9112-4cf1616507bc",
+		"name": "Tutor MDP M7",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26088181"
+	},
+	"item": [
+		{
+			"name": "Get All Hero",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/heroes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"heroes",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/heroes/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"heroes",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "14667"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"394b-rsVH5fDCKcROhbxucDdQfrHLsws\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 03 Mar 2025 07:44:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"heroes\": [\n        {\n            \"id\": \"1011\",\n            \"name\": \"Bruce Banner\",\n            \"description\": \"Brilliant scientist Dr. Bruce Banner has finally found a way to coexist with his monstrous alter ego, the Hulk. By accumulating gamma energy over transformations, he can become a wise and strong Hero Hulk or a fierce and destructive Monster Hulk – a true force of fury on the battlefield!\",\n            \"difficulty\": \"4\",\n            \"image\": \"https://mrapi.org/assets/characters/bruce-banner-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1014\",\n            \"name\": \"The Punisher\",\n            \"description\": \"Expertly wielding a full arsenal of futuristic weapons, Frank Castle is a formidable one-man army. With a steadfast resolve to deliver justice to his enemies, The Punisher won't cease in his mission until every last round is fired!\",\n            \"difficulty\": \"1\",\n            \"image\": \"https://mrapi.org/assets/characters/the-punisher-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1015\",\n            \"name\": \"Storm\",\n            \"description\": \"An Omega-level Mutant ability to manipulate weather makes Ororo Munroe a force to be reckoned with. Rain or shine, thunder or lightning, nature itself bends to the command of the Goddess of the Storm!\",\n            \"difficulty\": \"3\",\n            \"image\": \"https://mrapi.org/assets/characters/storm-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1016\",\n            \"name\": \"Loki\",\n            \"description\": \"What greater thrill is there for a God of Mischief than to outsmart his foes? The cunning trickster Loki uses his illusions and shapeshifting abilities to weave in and out of combat, toying with enemies at every turn.\",\n            \"difficulty\": \"4\",\n            \"image\": \"https://mrapi.org/assets/characters/loki-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1017\",\n            \"name\": \"Human Torch\",\n            \"description\": \"The Fantastic Four's resident heartthrob, Johnny Storm, adds an intense flare to every battle he fights. Shrouded in roaring flames, the Human Torch always manages to look cool while turning up the heat!\",\n            \"difficulty\": \"3\",\n            \"image\": \"https://mrapi.org/assets/characters/human-torch-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1018\",\n            \"name\": \"Doctor Strange\",\n            \"description\": \"As the Sorcerer Supreme, Dr. Stephen Strange gracefully wields ancient spells to turn the tide of even the most impossible battle. However, magic always comes at a cost, and each use of his arcane abilities gradually awakens the darkness within him.\",\n            \"difficulty\": \"2\",\n            \"image\": \"https://mrapi.org/assets/characters/doctor-strange-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1020\",\n            \"name\": \"Mantis\",\n            \"description\": \"Mantis uses her impressive mental abilities and her penchant for plant control to anchor any team she fights alongside. Her powers tap into a limitless flow of life energy, gently nourishing everything she touches.\",\n            \"difficulty\": \"1\",\n            \"image\": \"https://mrapi.org/assets/characters/mantis-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1021\",\n            \"name\": \"Hawkeye\",\n            \"description\": \"Despite his lack of superpowers, Hawkeye's unparalleled skills as a marksman have earned him a spot alongside earth's mightiest heroes. With a cool head and steady hand, Clint Barton never misses a target… so enemies best stay out of his sights! \",\n            \"difficulty\": \"4\",\n            \"image\": \"https://mrapi.org/assets/characters/hawkeye-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1022\",\n            \"name\": \"Captain America\",\n            \"description\": \"Enhanced by the Super-Soldier Serum, Steven \\\"Steve\\\" Rogers uses his Vibranium shield and extensive combat training to confront any threat to justice. When Captain America rallies his troops, a wave of courage sweeps across the battlefield!\",\n            \"difficulty\": \"3\",\n            \"image\": \"https://mrapi.org/assets/characters/captain-america-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1023\",\n            \"name\": \"Rocket Raccoon\",\n            \"description\": \"Rocket may not look like a tech genius or an expert tactician, but anyone who's ever made his hit list has quickly regretted underestimating him. This savvy space soldier is equally eager to boost his teammates and to collect bounties on his foes.\",\n            \"difficulty\": \"1\",\n            \"image\": \"https://mrapi.org/assets/characters/rocket-raccoon-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1024\",\n            \"name\": \"Hela\",\n            \"description\": \"As the Goddess of Death, Hela wields supreme control over the fallen souls residing in Hel. With a haunting whisper and a murder of crows, the queen of the underworld gracefully reaps the souls of her enemies without an ounce of mercy.\",\n            \"difficulty\": \"3\",\n            \"image\": \"https://mrapi.org/assets/characters/hela-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1025\",\n            \"name\": \"Cloak & Dagger\",\n            \"description\": \"Tyrone Johnson and Tandy Bowen are nearly inseparable, like two sides of the same coin. Intertwined by forces of shadow and light, Cloak & Dagger fight as a united front, dealing havoc and healing allies across the arena.\",\n            \"difficulty\": \"3\",\n            \"image\": \"https://mrapi.org/assets/characters/cloak-dagger-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1026\",\n            \"name\": \"Black Panther\",\n            \"description\": \"T'Challa, King of Wakanda, wields the perfect blend of the cutting-edge Vibranium technology and ancestral power drawn from the Panther God, Bast. The Black Panther bides his time until elegantly infiltrating enemy lines and commencing his hunt.\",\n            \"difficulty\": \"4\",\n            \"image\": \"https://mrapi.org/assets/characters/black-panther-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1027\",\n            \"name\": \"Groot\",\n            \"description\": \"A flora colossus from Planet X, the alien known as Groot exhibits enhanced vitality and the ability to manipulate all forms of vegetation. As sturdy as a towering tree, Groot forges his own way, serving as the team's silent but reliable pathfinder.\",\n            \"difficulty\": \"2\",\n            \"image\": \"https://mrapi.org/assets/characters/groot-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1029\",\n            \"name\": \"Magik\",\n            \"description\": \"Trained in dark arts and wielding her mighty Soulsword, Magik leaps through portals to navigate the arena with ease. Once Illyana transforms into the demonic Darkchild, all those who dare stand against her will fall before her merciless blade.\",\n            \"difficulty\": \"3\",\n            \"image\": \"https://mrapi.org/assets/characters/magik-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1030\",\n            \"name\": \"Moon Knight\",\n            \"description\": \"As the avatar of the Egyptian God of Vengeance, Marc Spector's body has been enhanced by Khonshu himself. Bathed in a luminous aura that pierces the darkness, Moon Knight glides through the night, ready to sear his enemies with his master's sacred Ankhs.\",\n            \"difficulty\": \"3\",\n            \"image\": \"https://mrapi.org/assets/characters/moon-knight-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1031\",\n            \"name\": \"Luna Snow\",\n            \"description\": \"Equal parts pop star and Super Hero, Luna Snow puts on a dazzling show with both her light and dark ice powers. The arena is her stage, where Seol Hee and her team orchestrate spectacular displays that earn her an ever-increasing number of fans and wins.\",\n            \"difficulty\": \"2\",\n            \"image\": \"https://mrapi.org/assets/characters/luna-snow-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1032\",\n            \"name\": \"Squirrel Girl\",\n            \"description\": \"Possessing only the powers of a common squirrel, somehow Doreen Green manages to defeat seemingly invincible enemies in the most unexpected ways. Any foe who counts her out is bound to fall at the hands of the Unbeatable Squirrel Girl!\",\n            \"difficulty\": \"1\",\n            \"image\": \"https://mrapi.org/assets/characters/squirrel-girl-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1033\",\n            \"name\": \"Black Widow\",\n            \"description\": \"Natasha Romanova is the world's most elite spy in any era. Her mastery of the sniper rifle eliminates targets from afar, while her shock batons neutralize close-range threats. Black Widow is locked, loaded, and ready to deliver a fatal bite!\",\n            \"difficulty\": \"4\",\n            \"image\": \"https://mrapi.org/assets/characters/black-widow-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1034\",\n            \"name\": \"Iron Man\",\n            \"description\": \"Armed with superior intellect and a nanotech battlesuit of his own design, Tony Stark stands alongside gods as the Invincible Iron Man. His state of the art armor turns any battlefield into his personal playground, allowing him to steal the spotlight he so desperately desires.\",\n            \"difficulty\": \"2\",\n            \"image\": \"https://mrapi.org/assets/characters/iron-man-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1035\",\n            \"name\": \"Venom\",\n            \"description\": \"Using his symbiote-enhanced body as the perfect living weapon, Eddie Brock and his alien ally stand ever-ready to unleash vicious attacks upon anyone he deems an enemy. Those ensnared by Venom's tentacles have no choice but to surrender to this insatiable predator.\",\n            \"difficulty\": \"1\",\n            \"image\": \"https://mrapi.org/assets/characters/venom-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1036\",\n            \"name\": \"Spider-man\",\n            \"description\": \"Swinging around the arena on his signature weblines, your friendly neighborhood Spider-Man, AKA Peter Parker, catches his rivals by surprise with sneaky, sticky bursts of webbing and unexpected attacks from above. Look out... here comes the Spider-Man!\",\n            \"difficulty\": \"5\",\n            \"image\": \"https://mrapi.org/assets/characters/spider-man-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1037\",\n            \"name\": \"Magneto\",\n            \"description\": \"The Master of Magnetism bends even the strongest metal to his whims, shielding his allies and striking at his foes. Whether he calls himself Max Eisenhardt, Erik Lehnsherr, or simply Magneto, the hardships this warrior has endured have made him as unbreakable as the steel he brandishes. \",\n            \"difficulty\": \"2\",\n            \"image\": \"https://mrapi.org/assets/characters/magneto-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1038\",\n            \"name\": \"Scarlet Witch\",\n            \"description\": \"Wanda Maximoff is adept at harnessing formidable chaos magic, casting hexes with the power to twist and reshape reality itself. Energy, space, and matter are mere playthings in the hands of Scarlet Witch!\",\n            \"difficulty\": \"1\",\n            \"image\": \"https://mrapi.org/assets/characters/scarlet-witch-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1039\",\n            \"name\": \"Thor\",\n            \"description\": \"The son of Odin taps into his divine power to call forth thunder and lightning, raining down relentless fury upon his enemies. With his mighty hammer Mjölnir in hand, Thor effortlessly asserts his dominance on the field of combat.\",\n            \"difficulty\": \"3\",\n            \"image\": \"https://mrapi.org/assets/characters/thor-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1040\",\n            \"name\": \"Mister Fantastic\",\n            \"description\": \"Reed Richards believes that true strength comes from remaining flexible, both mentally and physically. Mister Fantastic's elastic body, which can twist and stretch into any form with ease, is almost as impressive as his brilliant mind.\",\n            \"difficulty\": \"3\",\n            \"image\": \"https://mrapi.org/assets/characters/mister-fantastic-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1041\",\n            \"name\": \"Winter Soldier\",\n            \"description\": \"Terrifying experiments turned him into a brainwashed assassin, but now James \\\"Bucky\\\" Barnes is in control of his own fate once again. With his enhanced mechanical arm, the Winter Soldier is primed to deliver earth-shattering blows to any foe in his path!\",\n            \"difficulty\": \"3\",\n            \"image\": \"https://mrapi.org/assets/characters/winter-soldier-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1042\",\n            \"name\": \"Peni Parker\",\n            \"description\": \"Peni Parker may be young, but she bravely stands on the frontlines to protect the Web of Life and Destiny. Together, this teen prodigy and her state-of-the-art mech, the sensational SP//dr, make for the most thrilling duo on the battlefield!\",\n            \"difficulty\": \"4\",\n            \"image\": \"https://mrapi.org/assets/characters/peni-parker-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1043\",\n            \"name\": \"Star-lord\",\n            \"description\": \"Peter Quill lives to dazzle his foes on the battlefield with his signature swagger. As his element guns paint arcs of devastation, his acrobatic moves sail through the sky with unrivaled style. With performances this spectacular, it's no wonder that Star-Lord is so legendary!\",\n            \"difficulty\": \"2\",\n            \"image\": \"https://mrapi.org/assets/characters/star-lord-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1045\",\n            \"name\": \"Namor\",\n            \"description\": \"The unrivaled King of the Seas, Namor surfs into battle on a mighty wave with an army of fierce aquatic creatures in his wake. When ancient horns of war blare, devastation soon follows as deadly waters engulf the arena.\",\n            \"difficulty\": \"2\",\n            \"image\": \"https://mrapi.org/assets/characters/namor-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1046\",\n            \"name\": \"Adam Warlock\",\n            \"description\": \"The genetically-engineered Adam Warlock wields powerful Quantum Magic, enabling him to connect and heal souls with a gentle touch. When the time comes for his allies to unite, Warlock stands as the unwavering epicenter of cosmic justice!\",\n            \"difficulty\": \"3\",\n            \"image\": \"https://mrapi.org/assets/characters/adam-warlock-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1047\",\n            \"name\": \"Jeff The Land Shark\",\n            \"description\": \"Most land sharks are vicious creatures of the deep... but not Jeff! This adorable and mischievous little guy brings joy and healing to every battle. But if the tide turns, Jeff can morph into a voracious beast, capable of swallowing an army of foes in a single gulp!\",\n            \"difficulty\": \"1\",\n            \"image\": \"https://mrapi.org/assets/characters/jeff-the-land-shark-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1048\",\n            \"name\": \"Psylocke\",\n            \"description\": \"The psychic warrior known as Sai has the Mutant ability to conjure a variety of weapons with the power of her mind. Gracefully gliding across the battlefield, this trained ninja can shatter the enemy's defenses with a single thought.\",\n            \"difficulty\": \"5\",\n            \"image\": \"https://mrapi.org/assets/characters/psylocke-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1049\",\n            \"name\": \"Wolverine\",\n            \"description\": \"Thanks to his regenerative healing factor and berserker rage, the centuries-old Logan can fight through the worst pain to go claw-to-claw with any foe. The Wolverine stands ready to shred through all obstacles in his way with his Adamantium claws.\",\n            \"difficulty\": \"3\",\n            \"image\": \"https://mrapi.org/assets/characters/wolverine-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1050\",\n            \"name\": \"Invisible Woman\",\n            \"description\": \"The Invisible Woman is able to slip in and out of sight without a trace. No matter how intense the battle may be, Susan Storm always keeps her cool, conjuring up impenetrable force fields to protect herself and her team.\",\n            \"difficulty\": \"4\",\n            \"image\": \"https://mrapi.org/assets/characters/invisible-woman-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1051\",\n            \"name\": \"The Thing\",\n            \"description\": \"Benjamin J. Grimm is unquestionably the rock star of any team he's on. Always at the forefront of the fight, the Thing shields his allies with his unbreakable form, selflessly fending off any harm that comes their way.\",\n            \"difficulty\": \"1\",\n            \"image\": \"https://mrapi.org/assets/characters/the-thing-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1052\",\n            \"name\": \"Iron Fist\",\n            \"description\": \"Lin Lie is a master of Chinese martial arts who once wielded the shattered Sword of Fu Xi. After fusing its pieces with the mighty Chi of Shou-Lao, he is poised to strike his foes with the grace and force of a soaring dragon as the latest immortal Iron Fist.\",\n            \"difficulty\": \"4\",\n            \"image\": \"https://mrapi.org/assets/characters/iron-fist-square.png\",\n            \"deleted_at\": null\n        }\n    ],\n    \"count\": 37\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Heroes by name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/heroes/name/black",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"heroes",
+						"name",
+						"black"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/heroes/name/black",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"heroes",
+								"name",
+								"black"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "825"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"339-G90Lfu3sSMMVtVv5xENQr9S40Qk\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 03 Mar 2025 07:46:10 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"hero\": [\n        {\n            \"id\": \"1026\",\n            \"name\": \"Black Panther\",\n            \"description\": \"T'Challa, King of Wakanda, wields the perfect blend of the cutting-edge Vibranium technology and ancestral power drawn from the Panther God, Bast. The Black Panther bides his time until elegantly infiltrating enemy lines and commencing his hunt.\",\n            \"difficulty\": \"4\",\n            \"image\": \"https://mrapi.org/assets/characters/black-panther-square.png\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"1033\",\n            \"name\": \"Black Widow\",\n            \"description\": \"Natasha Romanova is the world's most elite spy in any era. Her mastery of the sniper rifle eliminates targets from afar, while her shock batons neutralize close-range threats. Black Widow is locked, loaded, and ready to deliver a fatal bite!\",\n            \"difficulty\": \"4\",\n            \"image\": \"https://mrapi.org/assets/characters/black-widow-square.png\",\n            \"deleted_at\": null\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Deleted Heroes",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "Success Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/heroes/deleted",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"heroes",
+								"deleted"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "916"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"394-bjs+M9v+Z9Vc8a3xwCqosuP0uMg\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 03 Mar 2025 07:47:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"heroes\": [\n        {\n            \"id\": \"1011\",\n            \"name\": \"Bruce Banner\",\n            \"description\": \"Brilliant scientist Dr. Bruce Banner has finally found a way to coexist with his monstrous alter ego, the Hulk. By accumulating gamma energy over transformations, he can become a wise and strong Hero Hulk or a fierce and destructive Monster Hulk – a true force of fury on the battlefield!\",\n            \"difficulty\": \"4\",\n            \"image\": \"https://mrapi.org/assets/characters/bruce-banner-square.png\",\n            \"deleted_at\": \"2025-03-03T07:47:24.567Z\"\n        },\n        {\n            \"id\": \"1014\",\n            \"name\": \"The Punisher\",\n            \"description\": \"Expertly wielding a full arsenal of futuristic weapons, Frank Castle is a formidable one-man army. With a steadfast resolve to deliver justice to his enemies, The Punisher won't cease in his mission until every last round is fired!\",\n            \"difficulty\": \"1\",\n            \"image\": \"https://mrapi.org/assets/characters/the-punisher-square.png\",\n            \"deleted_at\": \"2025-03-03T07:47:30.456Z\"\n        }\n    ],\n    \"count\": 2\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Hero by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/heroes/1014",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"heroes",
+						"1014"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Hero by ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Bruicy",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/heroes/update/1011",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"heroes",
+						"update",
+						"1011"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success Example",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Bruicy",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/heroes/update/1011",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"heroes",
+								"update",
+								"1011"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "501"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1f5-FGUw7Qa8ksUorj9WHQNAOj4ZblA\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 03 Mar 2025 07:49:47 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"message\": \"Hero updated successfully\",\n    \"hero\": {\n        \"id\": \"1011\",\n        \"name\": \"Bruicy\",\n        \"description\": \"Brilliant scientist Dr. Bruce Banner has finally found a way to coexist with his monstrous alter ego, the Hulk. By accumulating gamma energy over transformations, he can become a wise and strong Hero Hulk or a fierce and destructive Monster Hulk – a true force of fury on the battlefield!\",\n        \"difficulty\": \"4\",\n        \"image\": \"https://mrapi.org/assets/characters/bruce-banner-square.png\",\n        \"deleted_at\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Add new hero",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "1923",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Galacta",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Better get that vehicle moving!",
+							"type": "text"
+						},
+						{
+							"key": "difficulty",
+							"value": "4",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/heroes/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"heroes",
+						"add"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Example success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1923",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Galacta",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Better get that vehicle moving!",
+									"type": "text"
+								},
+								{
+									"key": "difficulty",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/heroes/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"heroes",
+								"add"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "186"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ba-IxE8qh1jPp2XU2ksWX2mfwCZcgQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 03 Mar 2025 08:55:21 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 201,\n    \"message\": \"Hero created successfully\",\n    \"hero\": {\n        \"id\": \"1923\",\n        \"name\": \"Galacta\",\n        \"description\": \"Better get that vehicle moving!\",\n        \"difficulty\": \"4\",\n        \"image\": null,\n        \"deleted_at\": null\n    }\n}"
+				}
+			]
+		}
+	]
+}
