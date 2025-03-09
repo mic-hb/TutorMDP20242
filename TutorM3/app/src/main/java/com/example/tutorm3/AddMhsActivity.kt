@@ -9,30 +9,24 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
+import com.example.tutorm3.databinding.ActivityAddMhsBinding
 
 class AddMhsActivity : AppCompatActivity() {
     var mode:String? = "INSERT"
-    lateinit var buttonAddMahasiswa: Button
-    lateinit var etNRP: EditText
-    lateinit var etNama: EditText
-    lateinit var spinnerJurusan: Spinner
+    lateinit var binding: ActivityAddMhsBinding
 
     var listJurusan:ArrayList<String> = arrayListOf("Informatika", "SIB", "DKV", "Elektro", "Lainnya")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_add_mhs)
+        binding = ActivityAddMhsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.add_mhs)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        buttonAddMahasiswa = findViewById(R.id.buttonAddMahasiswa)
-        etNRP = findViewById(R.id.etNRP)
-        etNama = findViewById(R.id.etNama)
-        spinnerJurusan = findViewById(R.id.spinnerJurusan)
 
         mode = intent.getStringExtra("mode")
 
@@ -44,12 +38,12 @@ class AddMhsActivity : AppCompatActivity() {
             this, android.R.layout.simple_spinner_item, listJurusan
         )
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerJurusan.adapter = spinnerAdapter
+        binding.spinnerJurusan.adapter = spinnerAdapter
 
 
         if (mode == "UPDATE") {
             //isi sesuai data yang dipilih
-            buttonAddMahasiswa.text = "Edit"
+            binding.buttonAddMahasiswa.text = "Edit"
             var nrp: String? = intent.getStringExtra("nrp")
 
             var mhs = MockDB.listMhs.find { m -> m.nrp == nrp }
@@ -61,17 +55,17 @@ class AddMhsActivity : AppCompatActivity() {
                     10 -> 3
                     else -> 4
                 }
-                etNRP.setText(nrp)
-                etNama.setText(mhs.nama)
-                spinnerJurusan.setSelection(selectedPosition)
-                etNRP.isEnabled = false
+                binding.etNRP.setText(nrp)
+                binding.etNama.setText(mhs.nama)
+                binding.spinnerJurusan.setSelection(selectedPosition)
+                binding.etNRP.isEnabled = false
             }
         }
 
-        buttonAddMahasiswa.setOnClickListener {
-            var nrp:String = etNRP.text.toString()
-            var nama:String = etNama.text.toString()
-            var jurusanString: String = spinnerJurusan.selectedItem.toString()
+        binding.buttonAddMahasiswa.setOnClickListener {
+            var nrp:String = binding.etNRP.text.toString()
+            var nama:String = binding.etNama.text.toString()
+            var jurusanString: String = binding.spinnerJurusan.selectedItem.toString()
             var jurusan:Int = when(jurusanString){
                 "Informatika"->11
                 "SIB"->18

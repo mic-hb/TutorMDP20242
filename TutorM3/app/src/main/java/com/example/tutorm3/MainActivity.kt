@@ -11,12 +11,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import com.example.tutorm3.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var btnToAddMahasiswa:Button
-    lateinit var btnSort:Button
-    lateinit var btnChange:Button
-    lateinit var rvMahasiswa: RecyclerView
+    lateinit var binding: ActivityMainBinding
     lateinit var mhsAdapter: MahasiswaAdapter
     private val NUMBER_OF_COL = 2
     var rvMode: Int = 1
@@ -25,26 +23,22 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        rvMahasiswa = findViewById(R.id.rvMahasiswa)
-        btnToAddMahasiswa = findViewById(R.id.btnToAddMahasiswa)
-        btnSort = findViewById(R.id.btnSort)
-        btnChange = findViewById(R.id.btnChange)
-
         setAdapterAndLayoutManager(rvMode)
 
-        btnToAddMahasiswa.setOnClickListener {
+        binding.btnToAddMahasiswa.setOnClickListener {
             val intent = Intent(this@MainActivity, AddMhsActivity::class.java)
             intent.putExtra("mode","INSERT")
             startActivity(intent)
         }
-        btnSort.setOnClickListener {
+        binding.btnSort.setOnClickListener {
             if(sortMode==1){
                 sortMode = 0
                 //Untuk sorting secara descending, pakai sortByDescending
@@ -52,30 +46,30 @@ class MainActivity : AppCompatActivity() {
                 MockDB.listMhs.sortByDescending {
                         mhs-> mhs.nrp + mhs.nama
                 }
-                btnSort.text = "Sort Ascending"
+                binding.btnSort.text = "Sort Ascending"
             }else {
                 sortMode = 1
                 //Untuk sorting secara ascending, pakai sortBy saja
                 MockDB.listMhs.sortBy {
                         mhs-> mhs.nrp + mhs.nama
                 }
-                btnSort.text = "Sort Descending"
+                binding.btnSort.text = "Sort Descending"
             }
             mhsAdapter.notifyDataSetChanged()
         }
-        btnChange.setOnClickListener {
+        binding.btnChange.setOnClickListener {
             when(rvMode){
                 1 -> {
                     rvMode = 2
-                    btnChange.text = "Change to Horizontal List"
+                    binding.btnChange.text = "Change to Horizontal List"
                 }
                 2 -> {
                     rvMode = 3
-                    btnChange.text = "Change to Vertical List"
+                    binding.btnChange.text = "Change to Vertical List"
                 }
                 else->{
                     rvMode = 1
-                    btnChange.text = "Change to Grid"
+                    binding.btnChange.text = "Change to Grid"
                 }
             }
             setAdapterAndLayoutManager(rvMode)
@@ -118,7 +112,7 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("nrp",mhs.nrp)
             startActivity(intent)
         }
-        rvMahasiswa.apply {
+        binding.rvMahasiswa.apply {
             this.layoutManager = layoutManager
             this.adapter = mhsAdapter
         }
