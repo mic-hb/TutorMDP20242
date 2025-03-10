@@ -20,6 +20,12 @@ class MainActivity : AppCompatActivity() {
     var rvMode: Int = 1
     var sortMode: Int = 1
 
+    fun refreshList(){
+        mhsAdapter.submitList(
+            MockDB.listMhs.map { it.copy() }
+        )
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -55,7 +61,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 binding.btnSort.text = "Sort Descending"
             }
-            mhsAdapter.notifyDataSetChanged()
+            refreshList()
         }
         binding.btnChange.setOnClickListener {
             when(rvMode){
@@ -78,8 +84,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        mhsAdapter.notifyDataSetChanged()
+        refreshList()
     }
+
     private fun setAdapterAndLayoutManager(tipe:Int){
         lateinit var layoutManager: LayoutManager
         var layout:Int = R.layout.mahasiswa_item
