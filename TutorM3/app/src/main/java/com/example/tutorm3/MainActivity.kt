@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity() {
     var rvMode: Int = 1
     var sortMode: Int = 1
 
+
+    // Fungsi untuk memperbarui daftar mahasiswa yang ditampilkan di RecyclerView.
     fun refreshList(){
         mhsAdapter.submitList(
             MockDB.listMhs.map { it.copy() }
@@ -44,6 +46,7 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("mode","INSERT")
             startActivity(intent)
         }
+
         binding.btnSort.setOnClickListener {
             if(sortMode==1){
                 sortMode = 0

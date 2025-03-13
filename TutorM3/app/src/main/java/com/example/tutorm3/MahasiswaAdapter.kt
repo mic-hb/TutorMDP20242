@@ -9,10 +9,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-// adapter perlu mengextend class RecyclerView.Adapter<ViewHolder>
-// viewholder digunakan sebagai penampung view dalam layout
-// serta menggabungkan data dengan view
-// view holder berada didalam class Adapter
+// FunctionDiffUtil digunakan untuk membandingkan data yang lama dengan data yang baru
+// sehingga adapter dapat mengetahui perubahan data
+// FunctionDiffUtil digunakan untuk mengimplementasikan DiffUtil.ItemCallback<Class>
+// Class adalah data class yang akan dibandingkan
+// FunctionDiffUtil akan mengimplementasikan 2 fungsi yaitu areItemsTheSame dan areContentsTheSame
+// areItemsTheSame digunakan untuk membandingkan apakah item yang lama sama dengan item yang baru
+// areContentsTheSame digunakan untuk membandingkan apakah konten dari item yang lama sama dengan item yang baru
 class MahasiswaDiffUtil: DiffUtil.ItemCallback<Mahasiswa>(){
     override fun areItemsTheSame(oldItem: Mahasiswa, newItem: Mahasiswa): Boolean {
         return oldItem.nrp == newItem.nrp;
@@ -25,6 +28,10 @@ class MahasiswaDiffUtil: DiffUtil.ItemCallback<Mahasiswa>(){
 
 val mhsDiffUtil = MahasiswaDiffUtil()
 
+// adapter perlu mengextend class ListAdapter<Class, ViewHolder>
+// viewholder digunakan sebagai penampung view dalam layout
+// serta menggabungkan data dengan view
+// view holder berada didalam class Adapter
 class MahasiswaAdapter (
     val data: MutableList<Mahasiswa>,
     val layout: Int,

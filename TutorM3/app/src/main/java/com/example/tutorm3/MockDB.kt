@@ -1,6 +1,9 @@
 package com.example.tutorm3
 
 class MockDB {
+    // companion object digunakan untuk membuat properti atau fungsi yang bisa diakses tanpa membuat objek
+    // biasanya digunakan untuk membuat properti atau fungsi yang bersifat global
+    // disini mockDB digunakan untuk menyimpan data mahasiswa + function untuk menambahkan data mahasiswa
     companion object{
         val listMhs = mutableListOf(
             Mahasiswa("220181000", "Andi", 18),
