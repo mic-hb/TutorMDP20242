@@ -72,8 +72,8 @@ class MahasiswaAdapter (
             else -> "Lainnya"
         }
         holder.btnDeleteList.setOnClickListener{
-            data.removeAt(holder.adapterPosition)
-            notifyItemRemoved(holder.adapterPosition) //ini untuk memberitahu adapter bahwa ada item yang dihapus
+            data.removeAt(position)
+            notifyItemRemoved(position) //ini untuk memberitahu adapter bahwa ada item yang dihapus
         }
         holder.btnEditList.setOnClickListener{
             onEditClickListener.invoke(mhs)
