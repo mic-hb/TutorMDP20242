@@ -185,12 +185,12 @@ fun belajarList(){
     println("LIST (Tidak bisa di add/remove dan read only)")
     val hari = listOf("Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu")
     println(hari)
-    // hari[0] = "Minggu" //error karena read only
+//    hari[0] = "Minggu" //error karena read only
 
     println("MutableList & ArrayList (Bisa di add/remove)")
     println("ArrayList merupakan implementation dari MutableList")
-    val todo = mutableListOf("Kerja tugas praktikum", "Belajar materi minggu depan", "Cari makan", "Tidur")
-    // val todo = arrayListOf("Kerja tugas praktikum", "Belajar materi minggu depan", "Cari makan", "Tidur")
+//    val todo = mutableListOf("Kerja tugas praktikum", "Belajar materi minggu depan", "Cari makan", "Tidur")
+     val todo = arrayListOf("Kerja tugas praktikum", "Belajar materi minggu depan", "Cari makan", "Tidur")
     println(todo)
     todo.add("Mandi")
     todo.removeAt(0)
@@ -357,8 +357,8 @@ fun basicTutor(){
     val hewan2:Hewan = Hewan(hargaJual = 1500, hargaBeli = 900, jumlahKaki = 10)
 
     //coba print, ini sudah dioverride untuk method tostring
-//    println(hewan1)
-//    println(hewan2)
+    println(hewan1)
+    println(hewan2)
 //    println(hewan3)
 
     //untuk getter setter bisa langsung diakses dengan NamaClass.Properti
@@ -375,7 +375,7 @@ fun basicTutor(){
     hewan2.nomorKodeHewan = 0
     println(hewan2.kodeHewan)
 
-    val anjing1:Anjing = Anjing(30)
+    val anjing1:Anjing = Anjing(30, "A")
     println(anjing1)
     anjing1.hargaBeli = 1100 //bisa langsung set properti parent class seperti ini
     anjing1.hargaJual = 2000

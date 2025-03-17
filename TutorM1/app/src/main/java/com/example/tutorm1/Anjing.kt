@@ -9,6 +9,7 @@ class Anjing(berat:Int) : Hewan(berat = berat, jumlahKaki = 4 ), HewanDarat {
     constructor(berat: Int, nama:String) : this(berat) {
         namaHewan = nama
     }
+
     override fun toString(): String{
         return "Anjing $namaHewan dengan berat $berat kg memiliki harga beli ${hargaBeli.toRupiah()}, " +
                 "harga jual ${hargaJual.toRupiah()}, dan jumlah kaki $jumlahKaki"
