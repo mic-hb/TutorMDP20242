@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.widget.Button
 import android.content.Intent
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -40,6 +41,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         setAdapterAndLayoutManager(rvMode)
+
+        binding.textView.isVisible = MockDB.listMhs.isEmpty()
 
         binding.btnToAddMahasiswa.setOnClickListener {
             val intent = Intent(this@MainActivity, AddMhsActivity::class.java)
