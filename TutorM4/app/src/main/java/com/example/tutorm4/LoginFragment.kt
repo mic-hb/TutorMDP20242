@@ -25,8 +25,10 @@ class LoginFragment : Fragment() {
         binding.loginBtnLogin.setOnClickListener {
             val username = binding.usernameEtLogin.text.toString()
 
+            // syntax dibawah ini adalah cara untuk melakukan navigasi tanpa menggunakan safe args
 //            findNavController().navigate(R.id.action_loginFragment_to_userFragment)
 
+            // syntax dibawah ini adalah cara untuk melakukan navigasi menggunakan safe args
             val action = LoginFragmentDirections.actionLoginFragmentToUserFragment(username)
             findNavController().navigate(action)
         }
