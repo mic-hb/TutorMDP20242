@@ -5,9 +5,30 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-// adapter perlu mengextend class RecyclerView.Adapter<ViewHolder>
+// FunctionDiffUtil digunakan untuk membandingkan data yang lama dengan data yang baru
+// sehingga adapter dapat mengetahui perubahan data
+// FunctionDiffUtil digunakan untuk mengimplementasikan DiffUtil.ItemCallback<Class>
+// Class adalah data class yang akan dibandingkan
+// FunctionDiffUtil akan mengimplementasikan 2 fungsi yaitu areItemsTheSame dan areContentsTheSame
+// areItemsTheSame digunakan untuk membandingkan apakah item yang lama sama dengan item yang baru
+// areContentsTheSame digunakan untuk membandingkan apakah konten dari item yang lama sama dengan item yang baru
+class MahasiswaDiffUtil: DiffUtil.ItemCallback<Mahasiswa>(){
+    override fun areItemsTheSame(oldItem: Mahasiswa, newItem: Mahasiswa): Boolean {
+        return oldItem.nrp == newItem.nrp;
+    }
+
+    override fun areContentsTheSame(oldItem: Mahasiswa, newItem: Mahasiswa): Boolean {
+        return oldItem == newItem
+    }
+}
+
+val mhsDiffUtil = MahasiswaDiffUtil()
+
+// adapter perlu mengextend class ListAdapter<Class, ViewHolder>
 // viewholder digunakan sebagai penampung view dalam layout
 // serta menggabungkan data dengan view
 // view holder berada didalam class Adapter
@@ -15,7 +36,7 @@ class MahasiswaAdapter (
     val data: MutableList<Mahasiswa>,
     val layout: Int,
     var onEditClickListener: ((Mahasiswa)-> Unit)
-): RecyclerView.Adapter<MahasiswaAdapter.ViewHolder>() {
+): ListAdapter<Mahasiswa, MahasiswaAdapter.ViewHolder>(mhsDiffUtil) {
     // custom class yang mengextend ViewHolder
     // digunakan untuk menambahkan property yang berisi view
     // yang didapatkan dari layout
@@ -51,8 +72,8 @@ class MahasiswaAdapter (
             else -> "Lainnya"
         }
         holder.btnDeleteList.setOnClickListener{
-            data.removeAt(holder.adapterPosition)
-            notifyItemRemoved(holder.adapterPosition) //ini untuk memberitahu adapter bahwa ada item yang dihapus
+            data.removeAt(position)
+            notifyItemRemoved(position) //ini untuk memberitahu adapter bahwa ada item yang dihapus
         }
         holder.btnEditList.setOnClickListener{
             onEditClickListener.invoke(mhs)

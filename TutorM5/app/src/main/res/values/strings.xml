@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">tutorM5</string>
+    <string name="total_biaya">Total: %s</string>
+</resources>

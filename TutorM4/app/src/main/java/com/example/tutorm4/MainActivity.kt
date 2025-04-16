@@ -1,5 +1,6 @@
 package com.example.tutorm4
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -93,8 +94,13 @@ class MainActivity : AppCompatActivity() {
                 //ini untuk aksi mengganti fragment tanpa mengirimkan arguments
                 container.getFragment<Fragment>().findNavController().navigate(R.id.action_global_homeFragment)
             }
-            else->{
+            R.id.menu_add->{
                 container.getFragment<Fragment>().findNavController().navigate(R.id.action_global_createFragment)
+            }
+            else->{
+                val intent = Intent(this, LoginRegisterActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }
         return super.onOptionsItemSelected(item)

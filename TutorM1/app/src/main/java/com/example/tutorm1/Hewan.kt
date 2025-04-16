@@ -2,12 +2,12 @@ package com.example.tutorm1
 
 open class Hewan(var hargaBeli: Int=9000, var hargaJual: Int=12000, val jumlahKaki: Int, var berat:Int = 50 ) {
 
-//    init {
-//        /**method init ini bertindak seperti constructor
-//        kita bisa set logic di sini, nantinya bagian kode ini akan terpanggil saat ada
-//        inisialisasi class**/
-//        println("ada hewan baru dibuat")
-//    }
+    init {
+        /**method init ini bertindak seperti constructor
+        kita bisa set logic di sini, nantinya bagian kode ini akan terpanggil saat ada
+        inisialisasi class**/
+        println("ada hewan baru dibuat")
+    }
 
     var profitJual:Int = 0
         //custom getter
@@ -19,7 +19,7 @@ open class Hewan(var hargaBeli: Int=9000, var hargaJual: Int=12000, val jumlahKa
     var namaHewan:String = ""
     var kodeHewan:String = ""
         get(){
-            return "H-${namaHewan.substring(0,1)}-$nomorKodeHewan"
+            return "H-${namaHewan.substring(0,2)}-$nomorKodeHewan"
         }
     var nomorKodeHewan:Int = 0
         set(urutan){
