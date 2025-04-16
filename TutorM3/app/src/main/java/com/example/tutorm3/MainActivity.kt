@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnToAddMahasiswa.setOnClickListener {
             val intent = Intent(this@MainActivity, AddMhsActivity::class.java)
-            intent.putExtra("mode","INSERT")
+            intent.putExtra("mode", "INSERT")
             startActivity(intent)
         }
 
@@ -55,15 +55,15 @@ class MainActivity : AppCompatActivity() {
                 sortMode = 0
                 //Untuk sorting secara descending, pakai sortByDescending
                 //untuk multiple sort, bisa dilakukan dengan memberi tanda +
-                MockDB.listMhs.sortByDescending {
-                        mhs-> mhs.nrp + mhs.nama
+                MockDB.listMhs.sortByDescending { mhs ->
+                    mhs.nrp + mhs.nama
                 }
                 binding.btnSort.text = "Sort Ascending"
             }else {
                 sortMode = 1
                 //Untuk sorting secara ascending, pakai sortBy saja
-                MockDB.listMhs.sortBy {
-                        mhs-> mhs.nrp + mhs.nama
+                MockDB.listMhs.sortBy { mhs ->
+                    mhs.nrp + mhs.nama
                 }
                 binding.btnSort.text = "Sort Descending"
             }
@@ -75,11 +75,13 @@ class MainActivity : AppCompatActivity() {
                     rvMode = 2
                     binding.btnChange.text = "Change to Horizontal List"
                 }
+
                 2 -> {
                     rvMode = 3
                     binding.btnChange.text = "Change to Vertical List"
                 }
-                else->{
+
+                else -> {
                     rvMode = 1
                     binding.btnChange.text = "Change to Grid"
                 }
@@ -95,24 +97,26 @@ class MainActivity : AppCompatActivity() {
 
     private fun setAdapterAndLayoutManager(tipe:Int){
         lateinit var layoutManager: LayoutManager
-        var layout:Int = R.layout.mahasiswa_item
+        var layout: Int = R.layout.mahasiswa_item
         when (tipe) {
             1 -> {
                 //linear layout bentuknya seperti list biasa urut ke bawah
                 layoutManager = LinearLayoutManager(this@MainActivity)
             }
+
             2 -> {
                 // tipe grid yang berbentuk card
                 // untuk jumlah kolom gunakan parameter kedua
                 layoutManager = GridLayoutManager(this, NUMBER_OF_COL)
                 layout = R.layout.mahasiswa_item_2
             }
+
             else -> {
                 // linear dengan scroll horizontal
                 // agar horizontal tambahkan properti LinearLayoutManager.HORIZONTAL
                 // reverse layout = false, maka akan rata kiri
                 // bila true maka akan menjadi rata kanan
-                layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
+                layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
                 layout = R.layout.mahasiswa_item_2
             }
         }
@@ -121,8 +125,8 @@ class MainActivity : AppCompatActivity() {
         // serta layout manager ke recycler view
         mhsAdapter = MahasiswaAdapter(MockDB.listMhs, layout) { mhs ->
             val intent = Intent(this@MainActivity, AddMhsActivity::class.java)
-            intent.putExtra("mode","UPDATE")
-            intent.putExtra("nrp",mhs.nrp)
+            intent.putExtra("mode", "UPDATE")
+            intent.putExtra("nrp", mhs.nrp)
             startActivity(intent)
         }
         binding.rvMahasiswa.apply {

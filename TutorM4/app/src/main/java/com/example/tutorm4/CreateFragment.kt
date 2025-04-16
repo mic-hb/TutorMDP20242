@@ -20,7 +20,9 @@ class CreateFragment : Fragment() {
     lateinit var etNama: EditText
     lateinit var tvMode: TextView
     lateinit var spinnerJurusan: Spinner
-    var mode:String = "INSERT"
+
+    var mode: String = "INSERT"
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,8 +30,9 @@ class CreateFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_create, container, false)
     }
+
     //delegate untuk akses argument fragment
-    val navArgs:CreateFragmentArgs by navArgs<CreateFragmentArgs>()
+    val navArgs: CreateFragmentArgs by navArgs<CreateFragmentArgs>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,19 +53,20 @@ class CreateFragment : Fragment() {
         spinnerJurusan = view.findViewById(R.id.spinnerJurusan)
 
         var spinnerAdapter: ArrayAdapter<String> = ArrayAdapter<String>(
-            requireContext(),android.R.layout.simple_spinner_item,MockDB.listJurusan)
+            requireContext(), android.R.layout.simple_spinner_item, MockDB.listJurusan
+        )
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerJurusan.adapter = spinnerAdapter
 
-        if(paramNrpEdit!=" "){ //karena kita beri default nilai spasi untuk null args
+        if (paramNrpEdit != " ") { //karena kita beri default nilai spasi untuk null args
             //mode edit
             mode = "UPDATE"
             buttonAddMahasiswa.text = "Edit"
             tvMode.text = "Edit Mahasiswa"
 
             //cara 1, find pakai nrp
-            var mhs = MockDB.listMhs.find { m-> m.nrp==paramNrpEdit }
-            if(mhs!=null){
+            var mhs = MockDB.listMhs.find { m -> m.nrp == paramNrpEdit }
+            if (mhs != null) {
                 var selectedPosition = MockDB.toSpinnerPosition(mhs.jurusan)
                 etNRP.setText(paramNrpEdit)
                 etNama.setText(mhs.nama)
@@ -79,25 +83,25 @@ class CreateFragment : Fragment() {
 //                spinnerJurusan.setSelection(MockDB.toSpinnerPosition(paramMhsEdit.jurusan))
 //            }
         }
-        buttonAddMahasiswa.setOnClickListener{
-            var nrp:String = etNRP.text.toString()
-            var nama:String = etNama.text.toString()
+        buttonAddMahasiswa.setOnClickListener {
+            var nrp: String = etNRP.text.toString()
+            var nama: String = etNama.text.toString()
             var jurusanString: String = spinnerJurusan.selectedItem.toString()
             var jurusan = MockDB.toNumJurusan(jurusanString)
-            if(mode=="INSERT"){
+            if (mode == "INSERT") {
                 val newMhs = Mahasiswa(nrp, nama, jurusan)
                 MockDB.addMahasiswa(newMhs)
                 Toast.makeText(activity, "Berhasil tambah mahasiswa", Toast.LENGTH_SHORT).show()
-            }else{
+            } else {
 
                 //cara 1 pakai index
                 var indexMhs = -1
-                for ((index, mhs) in MockDB.listMhs.withIndex()){
-                    if(mhs.nrp==nrp){
+                for ((index, mhs) in MockDB.listMhs.withIndex()) {
+                    if (mhs.nrp == nrp) {
                         indexMhs = index
                     }
                 }
-                if(indexMhs>-1){
+                if (indexMhs > -1) {
                     MockDB.listMhs[indexMhs].nama = nama
                     MockDB.listMhs[indexMhs].jurusan = jurusan
                 }

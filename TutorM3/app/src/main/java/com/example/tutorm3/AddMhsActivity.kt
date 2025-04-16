@@ -15,7 +15,8 @@ class AddMhsActivity : AppCompatActivity() {
     var mode:String? = "INSERT"
     lateinit var binding: ActivityAddMhsBinding
 
-    var listJurusan:ArrayList<String> = arrayListOf("Informatika", "SIB", "DKV", "Elektro", "Lainnya")
+    var listJurusan: ArrayList<String> =
+        arrayListOf("Informatika", "SIB", "DKV", "Elektro", "Lainnya")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,17 +74,17 @@ class AddMhsActivity : AppCompatActivity() {
                 "Elektro"->10
                 else-> 1
             }
-            if(mode=="INSERT"){
+            if (mode == "INSERT") {
                 val newMhs = Mahasiswa(nrp, nama, jurusan)
                 MockDB.addMahasiswa(newMhs)
-            }else{
+            } else {
                 var indexMhs = -1
-                for ((index, mhs) in MockDB.listMhs.withIndex()){
-                    if(mhs.nrp==nrp){
+                for ((index, mhs) in MockDB.listMhs.withIndex()) {
+                    if (mhs.nrp == nrp) {
                         indexMhs = index
                     }
                 }
-                if(indexMhs>-1){
+                if (indexMhs > -1) {
                     MockDB.listMhs[indexMhs].nama = nama
                     MockDB.listMhs[indexMhs].jurusan = jurusan
                 }

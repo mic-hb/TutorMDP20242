@@ -17,8 +17,10 @@ class HomeFragment : Fragment() {
     lateinit var rvMahasiswa: RecyclerView
     lateinit var mhsAdapter: MahasiswaAdapter
     lateinit var layoutManager: LayoutManager
-    lateinit var btnSort:Button
+    lateinit var btnSort: Button
+
     var sortMode: Int = 1
+
     //method untuk melakukan inflate layout ke fragment
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,25 +35,27 @@ class HomeFragment : Fragment() {
     //ini dijalankan sesudah onCreateView
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         btnToAdd = view.findViewById(R.id.btnToAdd)
         btnSort = view.findViewById(R.id.btnSort)
         rvMahasiswa = view.findViewById(R.id.rvMahasiswa)
 
         //require context akan mendapatkan context yang memanggil fragment ini
-        layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+        layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
         mhsAdapter = MahasiswaAdapter(MockDB.listMhs) { mhs ->
-            //untuk memberikan arguments pada action navigation dapat dilakukan seperti ini (bisa
+            // untuk memberikan arguments pada action navigation dapat dilakukan seperti ini (bisa
             // multiple argument juga)
 
-            //Bisa lewat action fragment tsb ke fragment lain
-            val action = HomeFragmentDirections.actionHomeFragmentToCreateFragment(mhs.nrp,mhs)
+            // Bisa lewat action fragment tsb ke fragment lain
+            val action = HomeFragmentDirections.actionHomeFragmentToCreateFragment(mhs.nrp, mhs)
 
-            //Bisa juga lewat global action
-            //val action = HomeFragmentDirections.actionGlobalCreateFragment(mhs.nrp,mhs)
+            // Bisa juga lewat global action
+            // val action = HomeFragmentDirections.actionGlobalCreateFragment(mhs.nrp,mhs)
 
             findNavController().navigate(action)
         }
+
         //JANGAN DIBUAT SEPERTI INI, RV TIDAK AKAN MUNCUL
 //        rvMahasiswa.apply {
 //            this.layoutManager = layoutManager
@@ -65,19 +69,20 @@ class HomeFragment : Fragment() {
         }
 
         btnSort.setOnClickListener {
-            if(sortMode==1){
+            if (sortMode == 1) {
                 sortMode = 0
-                MockDB.listMhs.sortByDescending {
-                        mhs-> mhs.nrp + mhs.nama
+                MockDB.listMhs.sortByDescending { mhs ->
+                    mhs.nrp + mhs.nama
                 }
                 btnSort.text = "Sort Ascending"
-            }else {
+            } else {
                 sortMode = 1
-                MockDB.listMhs.sortBy {
-                        mhs-> mhs.nrp + mhs.nama
+                MockDB.listMhs.sortBy { mhs ->
+                    mhs.nrp + mhs.nama
                 }
                 btnSort.text = "Sort Descending"
             }
+
             mhsAdapter.notifyDataSetChanged()
         }
     }
